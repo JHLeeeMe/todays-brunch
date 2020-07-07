@@ -7,7 +7,7 @@ if __name__ == '__main__':
     try:
         GITHUB_TOKEN = os.environ['GITHUB_TOKEN']
         REPO_NAME = 'todays-brunch'
-        CATEGORY = 'IT 트렌드'
+        CATEGORY = 'IT_트렌드'
         issue_title = get_title(CATEGORY)
         issue_body = get_body(CATEGORY)
 
