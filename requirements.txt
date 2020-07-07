@@ -1,0 +1,5 @@
+beautifulsoup4==4.9.1
+bs4==0.0.1
+PyGithub==1.51
+pytz==2020.1
+selenium==3.141.0
