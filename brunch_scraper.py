@@ -10,10 +10,12 @@ from typing import List
 
 Tag = bs4.element.Tag
 
+
 def get_title(category: str) -> str:
     issue_title = "[" + category + "] Today's brunch - " + \
             datetime.now(tz=timezone('Asia/Seoul')).strftime('%Y.%m.%d')
     return issue_title
+
 
 def get_body(category: str) -> str:
     issue_body = ''
@@ -29,11 +31,12 @@ def get_body(category: str) -> str:
         content = e.find('span', {'class': 'article_content'}).text + ' ...'
 
         issue_body += '<h1>' + title + \
-                '</h1><a href="' + href + '">' + href + '</a><br><br>' + \
-                content + \
-                '<h3><p align="right">' + author + '</h3></p><br><br><br>'
+            '</h1><a href="' + href + '">' + href + '</a><br><br>' + \
+            content + \
+            '<h3><p align="right">' + author + '</h3></p><br><br><br>'
 
     return issue_body
+
 
 def get_tags(category: str) -> List[Tag]:
     # headless option
@@ -57,6 +60,7 @@ def get_tags(category: str) -> List[Tag]:
     driver.quit()
 
     return a_tags
+
 
 def is_today(publish_time: str) -> bool:
     # '*시간전' or '*분전'
