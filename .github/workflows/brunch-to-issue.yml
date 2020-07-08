@@ -24,4 +24,4 @@ jobs:
       run: |
         python main.py
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.TODAYS_BRUNCH_TOKEN }}
