@@ -1,3 +1,4 @@
 .python-version
 .ipy*
 __pycache__
+notebook/
