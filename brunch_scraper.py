@@ -30,8 +30,8 @@ def get_body(category: str) -> str:
         title = e.find('strong').text
         content = e.find('span', {'class': 'article_content'}).text + ' ...'
 
-        issue_body += '<h1>' + title + \
-            '</h1><a href="' + href + '">' + href + '</a><br><br>' + \
+        issue_body += '<h1>' + title + '</h1>' \
+            '<a href="' + href + '">' + href + '</a><br><br>' + \
             content + \
             '<h3><p align="right">' + author + '</h3></p><br><br><br>'
 
