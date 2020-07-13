@@ -12,12 +12,27 @@ Tag = bs4.element.Tag
 
 
 def get_title(category: str) -> str:
+    """Create issue title.
+
+    Keyword arguments:
+        category: str -- brunch category
+    Return:
+        issue_title: str
+    """
     issue_title = "[" + category + "] Today's brunch - " + \
             datetime.now(tz=timezone('Asia/Seoul')).strftime('%Y.%m.%d')
     return issue_title
 
 
 def get_body(category: str) -> str:
+    """Create issue body.
+    include url, author, brunch title, content
+
+    Keyword arguments:
+        category: str -- brunch category
+    Return:
+        issue_body: str
+    """
     issue_body = ''
     for e in get_tags(category):
         publish_time = e.find('span', {'class': 'publish_time'}).text
@@ -39,6 +54,14 @@ def get_body(category: str) -> str:
 
 
 def get_tags(category: str) -> List[Tag]:
+    """Get <a> tags
+    scrolling & get page_source
+
+    Keyword arguments:
+        category: str -- brunch category
+    Return:
+        a_tags: bs4.element.ResultSet
+    """
     # headless option
     options = webdriver.ChromeOptions()
     options.add_argument('headless')
@@ -63,7 +86,13 @@ def get_tags(category: str) -> List[Tag]:
 
 
 def is_today(publish_time: str) -> bool:
-    # '*시간전' or '*분전'
+    """
+    Keyword arguments:
+        publish_time: str -- publish time
+    Return:
+        : bool
+    """
+    # 'n시간전' or 'n분전'
     if len(publish_time) < 6:
         return True
 
