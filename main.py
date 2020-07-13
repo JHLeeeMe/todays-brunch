@@ -3,7 +3,14 @@ import sys
 from github import Github
 from brunch_scraper import get_title, get_body
 
-if __name__ == '__main__':
+def run(category: str):
+    """Post github issue
+
+    Keyword arguments:
+        category: str -- brunch category
+    Return:
+        Unit
+    """
     try:
         GITHUB_TOKEN = os.environ['GITHUB_TOKEN']
         REPO_NAME = 'todays-brunch'
@@ -21,3 +28,7 @@ if __name__ == '__main__':
         print(res)
     except Exception as e:
         print(e)
+
+
+if __name__ == '__main__':
+    run(sys.argv[1])
