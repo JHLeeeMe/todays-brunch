@@ -27,6 +27,7 @@ def get_title(category: str) -> str:
 
 def get_body(category: str) -> str:
     """Create issue body.
+
     include url, author, brunch title, content
 
     Keyword arguments:
