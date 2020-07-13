@@ -88,7 +88,8 @@ def get_tags(category: str) -> List[Tag]:
 
 
 def is_today(publish_time: str) -> bool:
-    """
+    """Check today
+
     Keyword arguments:
         publish_time: str -- publish time
     Return:
