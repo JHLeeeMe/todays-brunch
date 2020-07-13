@@ -20,7 +20,8 @@ def get_title(category: str) -> str:
         issue_title: str
     """
     issue_title = "[" + category + "] Today's brunch - " + \
-            datetime.now(tz=timezone('Asia/Seoul')).strftime('%Y.%m.%d')
+        datetime.now(tz=timezone('Asia/Seoul')).strftime('%Y.%m.%d')
+
     return issue_title
 
 

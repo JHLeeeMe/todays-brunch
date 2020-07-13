@@ -3,6 +3,7 @@ import sys
 from github import Github
 from brunch_scraper import get_title, get_body
 
+
 def run(category: str):
     """Post github issue
 
