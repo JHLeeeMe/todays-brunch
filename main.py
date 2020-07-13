@@ -4,18 +4,18 @@ from github import Github
 from brunch_scraper import get_title, get_body
 
 
-def run(category: str):
+def run(category: str = 'IT_트렌드'):
     """Post github issue
 
     Keyword arguments:
-        category: str -- brunch category
+        category: str = 'IT_트렌드' -- brunch category
     Return:
         Unit
     """
     try:
         GITHUB_TOKEN = os.environ['GITHUB_TOKEN']
         REPO_NAME = 'todays-brunch'
-        CATEGORY = 'IT_트렌드'
+        CATEGORY = category
         issue_title = get_title(CATEGORY)
         issue_body = get_body(CATEGORY)
 
@@ -32,4 +32,8 @@ def run(category: str):
 
 
 if __name__ == '__main__':
-    run(sys.argv[1])
+    if len(sys.argv) > 1:
+        for i in range(1, len(sys.argv)):
+            run(sys.argv[i])
+    else:
+        run()
