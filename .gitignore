@@ -2,3 +2,4 @@
 .ipy*
 __pycache__
 notebook/
+web-drivers/
