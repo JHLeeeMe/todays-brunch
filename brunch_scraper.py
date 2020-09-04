@@ -69,7 +69,7 @@ def get_tags(category: str) -> List[Tag]:
     options.add_argument('headless')
     options.add_argument('window-size=1920x1080')
 
-    driver = webdriver.Chrome('./web-drivers/chromedriver', options=options)
+    driver = webdriver.Chrome('chromedriver', options=options)
 
     url = 'https://brunch.co.kr/keyword/' + category + '?q=g'
     driver.get(url)
