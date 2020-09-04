@@ -69,6 +69,7 @@ def get_tags(category: str) -> List[Tag]:
     options.add_argument('headless')
     options.add_argument('window-size=1920x1080')
 
+    # chromedriver는 Github Actions에서 설치하게 했기때문에 경로가 이러하다.
     driver = webdriver.Chrome('chromedriver', options=options)
 
     url = 'https://brunch.co.kr/keyword/' + category + '?q=g'
