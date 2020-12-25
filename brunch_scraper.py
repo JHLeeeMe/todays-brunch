@@ -1,11 +1,12 @@
+import time
+from typing import List
+from pytz import timezone
+from datetime import datetime
+
 import bs4
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import time
-from pytz import timezone
-from datetime import datetime
-from typing import List
 
 
 Tag = bs4.element.Tag
