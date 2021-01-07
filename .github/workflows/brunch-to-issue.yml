@@ -2,7 +2,7 @@ name: "Today's Brunch"
 
 on:
   schedule:
-    - cron: '40 14 * * *'
+    - cron: '30 14 * * *'
 
 jobs:
   build:
