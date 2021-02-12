@@ -15,9 +15,11 @@ Tag = bs4.element.Tag
 def get_title(category: str) -> str:
     """Create issue title.
 
-    Keyword arguments:
-        category: str -- brunch category
-    Return:
+    Args:
+        category: str
+            brunch category
+            
+    Returns:
         issue_title: str
     """
     issue_title = "[" + category + "] Today's brunch - " + \
@@ -31,9 +33,11 @@ def get_body(category: str) -> str:
 
     include url, author, brunch title, content
 
-    Keyword arguments:
-        category: str -- brunch category
-    Return:
+    Args:
+        category: str
+            brunch category
+            
+    Returns:
         issue_body: str
     """
     issue_body = ''
@@ -58,11 +62,14 @@ def get_body(category: str) -> str:
 
 def get_tags(category: str) -> List[Tag]:
     """Get <a> tags
+    
     scrolling & get page_source
 
-    Keyword arguments:
-        category: str -- brunch category
-    Return:
+    Args:
+        category: str
+            brunch category
+            
+    Returns:
         a_tags: bs4.element.ResultSet
     """
     # headless option
@@ -92,9 +99,10 @@ def get_tags(category: str) -> List[Tag]:
 def is_today(publish_time: str) -> bool:
     """Check today
 
-    Keyword arguments:
-        publish_time: str -- publish time
-    Return:
+    Args:
+        publish_time: str
+            publish time
+    Returns:
         : bool
     """
     # 'n시간전' or 'n분전'
