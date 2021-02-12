@@ -61,7 +61,7 @@ def get_body(category: str) -> str:
 
 
 def get_tags(category: str) -> List[Tag]:
-    """Get '<a>' tags
+    """Get 'a' tags
     
     scrolling & get page_source
 
