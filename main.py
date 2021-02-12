@@ -9,10 +9,9 @@ from brunch_scraper import get_title, get_body
 def run(category: str = 'IT_트렌드'):
     """Post github issue
 
-    Keyword arguments:
-        category: str = 'IT_트렌드' -- brunch category
-    Return:
-        Unit
+    Args:
+        category: str = 'IT_트렌드'
+            brunch category
     """
     try:
         GITHUB_TOKEN = os.environ['GITHUB_TOKEN']
