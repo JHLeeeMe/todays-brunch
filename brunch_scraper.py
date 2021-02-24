@@ -1,3 +1,14 @@
+"""Brunch Scraper
+
+Functions:
+    get_title(category: str) -> str
+    get_body(category: str) -> str
+
+    _get_tags(category: str) -> List[Tag]
+    _is_today(publish_time: str) -> bool
+
+"""
+
 import time
 from typing import List
 from pytz import timezone
@@ -43,10 +54,10 @@ def get_body(category: str) -> str:
 
     """
     issue_body = ''
-    for e in get_tags(category):
+    for e in _get_tags(category):
         publish_time = e.find('span', {'class': 'publish_time'}).text
 
-        if not is_today(publish_time):
+        if not _is_today(publish_time):
             break
 
         href = 'https://brunch.co.kr' + e['href']
@@ -62,7 +73,7 @@ def get_body(category: str) -> str:
     return issue_body
 
 
-def get_tags(category: str) -> List[Tag]:
+def _get_tags(category: str) -> List[Tag]:
     """Get 'a' tags
 
     scrolling & get page_source
@@ -99,7 +110,7 @@ def get_tags(category: str) -> List[Tag]:
     return a_tags
 
 
-def is_today(publish_time: str) -> bool:
+def _is_today(publish_time: str) -> bool:
     """Check today
 
     Args:

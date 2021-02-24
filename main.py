@@ -1,3 +1,13 @@
+"""main
+
+1. scrape today's brunch using brunch_scraper module
+2. post on github issue
+
+Functions:
+    _run(category: str = 'IT_트렌드')
+
+"""
+
 import os
 import sys
 
@@ -6,7 +16,7 @@ from github import Github
 from brunch_scraper import get_title, get_body
 
 
-def run(category: str = 'IT_트렌드'):
+def _run(category: str = 'IT_트렌드'):
     """Post github issue
 
     Args:
@@ -36,6 +46,7 @@ def run(category: str = 'IT_트렌드'):
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         for i in range(1, len(sys.argv)):
-            run(sys.argv[i])
+            _run(sys.argv[i])
     else:
-        run()
+        _run()
+
