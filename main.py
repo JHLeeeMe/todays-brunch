@@ -12,6 +12,7 @@ def run(category: str = 'IT_트렌드'):
     Args:
         category: str = 'IT_트렌드'
             brunch category
+
     """
     try:
         GITHUB_TOKEN = os.environ['GITHUB_TOKEN']
