@@ -4,7 +4,7 @@
 2. post on github issue
 
 Functions:
-    _run(category: str = 'IT_트렌드')
+    _run(category: str = 'IT_트렌드') -> None
 
 """
 
