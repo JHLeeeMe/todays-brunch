@@ -1,5 +1,11 @@
 """Brunch Scraper
 
+Attributes:
+    Tag: bs4.element.Tag
+        for type hint
+    URL_BASE: str
+        brunch web index page address
+
 Functions:
     get_title(category: str) -> str
     get_body(category: str) -> str
@@ -8,6 +14,7 @@ Functions:
     _is_today(publish_time: str) -> bool
 
 """
+
 import time
 from typing import List
 from urllib import parse
@@ -66,7 +73,7 @@ def get_body(category: str) -> str:
         title = e.find('strong').text
         content = e.find('span', {'class': 'article_content'}).text + ' ...'
 
-        issue_body += '<h1>' + title + '</h1>' \
+        issue_body += '<h1>' + title + '</h1>' + \
             '<a href="' + href + '">' + href + '</a><br><br>' + \
             content + \
             '<h3><p align="right">' + author + '</h3></p><br><br><br>'
