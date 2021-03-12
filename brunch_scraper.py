@@ -1,5 +1,11 @@
 """Brunch Scraper
 
+Attributes:
+    Tag: bs4.element.Tag
+        for type hint
+    URL_BASE: str
+        brunch web index page address
+
 Functions:
     get_title(category: str) -> str
     get_body(category: str) -> str
@@ -11,6 +17,7 @@ Functions:
 
 import time
 from typing import List
+from urllib import parse
 from pytz import timezone
 from datetime import datetime
 
@@ -21,6 +28,7 @@ from selenium.webdriver.common.keys import Keys
 
 
 Tag = bs4.element.Tag
+URL_BASE = 'https://brunch.co.kr'
 
 
 def get_title(category: str) -> str:
@@ -60,12 +68,12 @@ def get_body(category: str) -> str:
         if not _is_today(publish_time):
             break
 
-        href = 'https://brunch.co.kr' + e['href']
+        href = URL_BASE + e['href']
         author = 'by ' + e.find_all('span', {'class': 'name_txt'})[-1].text
         title = e.find('strong').text
         content = e.find('span', {'class': 'article_content'}).text + ' ...'
 
-        issue_body += '<h1>' + title + '</h1>' \
+        issue_body += '<h1>' + title + '</h1>' + \
             '<a href="' + href + '">' + href + '</a><br><br>' + \
             content + \
             '<h3><p align="right">' + author + '</h3></p><br><br><br>'
@@ -93,9 +101,26 @@ def _get_tags(category: str) -> List[Tag]:
 
     # chromedriver는 Github Actions에서 설치하게 했기때문에 경로가 이러하다.
     driver = webdriver.Chrome('chromedriver', options=options)
+    driver.implicitly_wait(5)
 
-    url = 'https://brunch.co.kr/keyword/' + category + '?q=g'
-    driver.get(url)
+    driver.get(URL_BASE)
+
+    elems = driver.find_elements_by_class_name(
+        'keyword_item.brunch_keyword_item'
+        )
+    for elem in elems:
+        href_attr = elem.get_attribute('href')
+        href_attr = href_attr.replace(URL_BASE + '/keyword/', '') \
+                             .replace('?q=g', '')
+        if href_attr == parse.quote(category):
+            target = elem
+            target.click()
+            break
+
+    driver.close()  # 첫번째 탭 닫기
+    last_tab = driver.window_handles[-1]
+    driver.switch_to.window(window_name=last_tab)
+
     elem = driver.find_element_by_tag_name('body')
     for i in range(5):
         elem.send_keys(Keys.END)
