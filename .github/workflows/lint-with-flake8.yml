@@ -2,9 +2,13 @@ name: Lint with flake8
 
 on:
   push:
-    branches: [ master ]
+    branches:
+    - master
+    - develop
+    - 'feature/**'
   pull_request:
-    branches: [ master ]
+    branches:
+    - master
 
 jobs:
   build:
