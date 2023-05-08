@@ -27,9 +27,8 @@ def _run(category: str = 'IT_트렌드'):
     try:
         GITHUB_TOKEN = os.environ['GITHUB_TOKEN']
         REPO_NAME = 'todays-brunch'
-        CATEGORY = category
-        issue_title = get_title(CATEGORY)
-        issue_body = get_body(CATEGORY)
+        issue_title = get_title(category)
+        issue_body = get_body(category)
 
         if issue_body == '':
             print('There is no updated brunch.')
@@ -49,3 +48,4 @@ if __name__ == '__main__':
             _run(sys.argv[i])
     else:
         _run()
+
