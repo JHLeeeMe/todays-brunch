@@ -21,7 +21,7 @@ jobs:
         python -m pip install --upgrade pip
         [[ -f requirements.txt ]] && pip install -r requirements.txt
     - name: Setup Chromedriver
-      uses: nanasess/setup-chromedriver@v1
+      uses: nanasess/setup-chromedriver@v2
     - name: Run main.py
       run: |
         python main.py
