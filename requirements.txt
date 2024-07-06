@@ -1,6 +1,6 @@
 beautifulsoup4==4.9.1
 bs4==0.0.1
-certifi==2023.7.22
+certifi==2024.7.4
 charset-normalizer==2.1.1
 Deprecated==1.2.13
 idna==3.7
