@@ -2,6 +2,7 @@ name: "Today's Brunch"
 
 on:
   push:
+    branches:
     - hotfix
   schedule:
     - cron: '00 14 * * *'
