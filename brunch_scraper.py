@@ -25,6 +25,7 @@ import bs4
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
 
 
 Tag = bs4.element.Tag
@@ -105,9 +106,10 @@ def _get_tags(category: str) -> List[Tag]:
 
     driver.get(URL_BASE)
 
-    elems = driver.find_elements_by_class_name(
-        'keyword_item.brunch_keyword_item'
-        )
+    elems = driver.find_elements(By.CLASS_NAME, 'keyword_item.brunch_keyword_item')
+    #elems = driver.find_elements_by_class_name(
+    #    'keyword_item.brunch_keyword_item'
+    #    )
     for elem in elems:
         href_attr = elem.get_attribute('href')
         href_attr = href_attr.replace(URL_BASE + '/keyword/', '') \
@@ -121,7 +123,8 @@ def _get_tags(category: str) -> List[Tag]:
     last_tab = driver.window_handles[-1]
     driver.switch_to.window(window_name=last_tab)
 
-    elem = driver.find_element_by_tag_name('body')
+    elem = driver.find_element(By.TAG_NAME, 'body')
+    #elem = driver.find_element_by_tag_name('body')
     for i in range(5):
         elem.send_keys(Keys.END)
         time.sleep(1)
