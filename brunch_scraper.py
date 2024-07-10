@@ -114,7 +114,9 @@ def _get_tags(category: str) -> List[Tag]:
         href_attr = elem.get_attribute('href')
         href_attr = href_attr.replace(URL_BASE + '/keyword/', '') \
                              .replace('?q=g', '')
+        print(href_attr)
         if href_attr == parse.quote(category):
+            print("find href_attr")
             target = elem
             target.click()
             break
